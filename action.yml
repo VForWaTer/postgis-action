@@ -7,3 +7,13 @@ branding:
 runs:
   using: 'docker'
   image: 'Dockerfile'
+inputs:
+  # not sure if we even need this.
+  pgsql_version:
+    required: false
+    default: '11'
+    description: 'PostgreSQL version'
+  pg_version:
+    required: false
+    default: '2.5'
+    description: 'PostGIS version'
