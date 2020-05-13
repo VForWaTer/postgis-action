@@ -1,5 +1,5 @@
 # TODO: replace with Vforwater-test-suite image
-FROM: postgis/postgis:11-2.5-alpine
+FROM: alpine:3.10
 
 # copy entrypoint
 COPY entrypoint.sh /entrypoint.sh
