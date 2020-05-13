@@ -1,0 +1,9 @@
+name: 'Postgis Setup'
+description: 'Setup Postgis database for end-to-end testing of metacatalog'
+author: 'mmaelicke'
+branding:
+  icon: 'database'
+  color: 'green'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
