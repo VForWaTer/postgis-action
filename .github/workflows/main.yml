@@ -21,7 +21,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Install depts
-      run: pip3 install sqlalchemy psycopg2
+      run: pip3 install sqlalchemy psycopg2 setuptools
 
     - name: Test
       run: python3 ./test.py
