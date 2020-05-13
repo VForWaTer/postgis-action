@@ -11,5 +11,8 @@ jobs:
     - name: Install Postgis
       uses: VForWater/postgis-action@v0.1
       
-    - name: Log in psql
+    - name: Psql Version
       run: psql --version
+    
+    - name: PostGIS Version
+      run: psql -c 'SELECT FROM PostGIS_full_version();'
