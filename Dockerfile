@@ -1,5 +1,5 @@
 # TODO: replace with Vforwater-test-suite image
-FROM: alpine:3.10
+FROM alpine:3.10
 
 # copy entrypoint
 COPY entrypoint.sh /entrypoint.sh
