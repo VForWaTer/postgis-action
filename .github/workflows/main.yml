@@ -18,21 +18,10 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    #- uses: actions/checkout@v2
-#    - name: Install Postgis
-      #uses: VForWater/postgis-action@v0.1
-#      uses: huaxk/postgis-action@v1.0.0
-#      with:
-#        postgresql_version: 10
-#        postgresql_user: metacatalog
-#        postgresql_password: supersecret    
-    
-#    - name: Docker Version
-#      run: docker --version
-      
-#    - name: Psql Version
-#      run: psql --version
-    
-    - name: PostGIS Version
-      run: PGPASSWORD=postgres psql -U postgres -c 'SELECT FROM PostGIS_full_version();'
+    - uses: actions/checkout@v2
+
+    - name: Install depts
+      run: pip3 install sqlalchemy
+
+    - name: Test
+      run: python3 ./test.py
