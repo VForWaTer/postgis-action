@@ -9,7 +9,7 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     #- uses: actions/checkout@v2
     - name: Install Postgis
-      uses: VForWater/postgis-action
+      uses: VForWater/postgis-action@v0.1
       
     - name: Log in psql
       run: psql --version
