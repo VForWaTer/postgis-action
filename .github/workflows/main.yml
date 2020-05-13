@@ -9,13 +9,18 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     #- uses: actions/checkout@v2
     - name: Install Postgis
-      uses: VForWater/postgis-action@v0.1
+      #uses: VForWater/postgis-action@v0.1
+      uses: huaxk/postgis-action@v1.0.0
+      with:
+        postgresql_version: 10
+        postgresql_user: metacatalog
+        postgresql_password: supersecret    
     
-    - name: Docker vsersion
+    - name: Docker Version
       run: docker --version
       
     - name: Psql Version
       run: psql --version
     
     - name: PostGIS Version
-      run: psql -c 'SELECT FROM PostGIS_full_version();'
+      run: PGPASSWORD=supersecret psql -U metacatalog -c 'SELECT FROM PostGIS_full_version();'
