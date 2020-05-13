@@ -7,6 +7,7 @@ print('[PORT] %s' % port)
 engine = create_engine('postgresql://postgres:postgres@localhost:%s/postgres' % port)
 
 with engine.connect() as connection:
+    connection.execute('commit')
     connection.execute('Create database metacatalog;')
 
 engine = create_engine('postgresql://postgres:postgres@localhost:%s/metacatalog' % port)
