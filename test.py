@@ -1,11 +1,15 @@
 from sqlalchemy import create_engine
+import os
 
-engine = create_engine('postgresql://postgres:postgres@localhost:5432/postgres')
+port = os.environ.get('POSTGRES_PORT', '5432')
+print('[PORT] %s' % port)
+
+engine = create_engine('postgresql://postgres:postgres@localhost:%s/postgres' % port)
 
 with engine.connect() as connection:
     connection.execute('Create database metacatalog;')
 
-engine = create_engine('postgresql://postgres:postgres@localhost:5432/metacatalog')
+engine = create_engine('postgresql://postgres:postgres@localhost:%s/metacatalog' % port)
 
 with engine.connect() as connection:
     connection.execute('create extension postgis;')
