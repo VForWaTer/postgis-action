@@ -19,9 +19,14 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Install Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.6
 
     - name: Install depts
-      run: pip3 install sqlalchemy psycopg2 setuptools
+      run: pip install sqlalchemy psycopg2
 
     - name: Test
-      run: python3 ./test.py
+      run: python ./test.py
