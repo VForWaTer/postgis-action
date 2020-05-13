@@ -5,22 +5,34 @@ on: ['push']
 jobs:
   test:
     runs-on: ubuntu-latest
+    
+    services:
+      postgis:
+        image: postgis/postgis:10-2.5
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+          - 5432/tcp
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     #- uses: actions/checkout@v2
-    - name: Install Postgis
+#    - name: Install Postgis
       #uses: VForWater/postgis-action@v0.1
-      uses: huaxk/postgis-action@v1.0.0
-      with:
-        postgresql_version: 10
-        postgresql_user: metacatalog
-        postgresql_password: supersecret    
+#      uses: huaxk/postgis-action@v1.0.0
+#      with:
+#        postgresql_version: 10
+#        postgresql_user: metacatalog
+#        postgresql_password: supersecret    
     
-    - name: Docker Version
-      run: docker --version
+#    - name: Docker Version
+#      run: docker --version
       
-    - name: Psql Version
-      run: psql --version
+#    - name: Psql Version
+#      run: psql --version
     
     - name: PostGIS Version
-      run: PGPASSWORD=supersecret psql -U metacatalog -c 'SELECT FROM PostGIS_full_version();'
+      run: PGPASSWORD=postgres psql -U postgres -c 'SELECT FROM PostGIS_full_version();'
