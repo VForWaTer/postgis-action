@@ -1,0 +1,15 @@
+name: Test
+
+on: ['push']
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    #- uses: actions/checkout@v2
+    - name: Install Postgis
+      uses: VForWater/postgis-action
+      
+    - name: Log in psql
+      run: psql --version
