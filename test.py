@@ -15,4 +15,4 @@ engine = create_engine('postgresql://postgres:postgres@localhost:%s/metacatalog'
 with engine.connect() as connection:
     connection.execute('create extension postgis;')
     res = connection.execute('select from PostGIS_full_version();')
-    print(res)
+    print(res.fetchall())
